@@ -1,5 +1,7 @@
 <script>
 	import Puzzle from './components/puzzle.svelte';
+
+	let puzzle_el;
 </script>
 
 <svelte:head>
@@ -8,6 +10,9 @@
 </svelte:head>
 
 <section>
-	<h1>Hello world</h1>
-	<Puzzle />
+	<button on:click={() => {puzzle_el.shuffle()}}> Shuffle</button>
+	<button on:click={() => {puzzle_el.solve()}}> Solve</button>
+	<button on:click={() => {puzzle_el.draw()}}> Image 1</button>
+	<button on:click={() => {puzzle_el.draw('/chest2.jpg')}}> Image 2</button>
+	<Puzzle bind:this={puzzle_el}/>
 </section>
