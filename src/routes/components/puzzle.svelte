@@ -26,31 +26,32 @@
 		draw();
 	});
 
-	export const draw = (src_image = '/chest.jpg') => {
+	export const draw = (src_image = '/3_2.jpg') => {
 		let img = new Image();
 		img.src = src_image;
 
 		img.onload = () => {
 			const initialWidth = canvas_container.clientWidth;
+			console.log(canvas_container.clientWidth)
 			headbreaker_canvas = new headbreaker.Canvas(canvas.id, {
 				width: canvas_container.clientWidth,
 				height: 650,
 				image: img,
 				preventOffstageDrag: true,
-				// pieceSize: 100,
-				lineSoftness: 0.18,
+				pieceSize: 200,
+				// lineSoftness: 0.18,
 				fixed: true,
 				proximity: 20,
-				borderFill: 5,
-				strokeWidth: 1.5,
-				strokeColor: 'white'
+				borderFill: 20,
+				strokeWidth: 0,
+				strokeColor: 'black'
 				// pieceSize: 40
 			});
 
 			headbreaker_canvas.adjustImagesToPuzzleHeight();
 			headbreaker_canvas.autogenerate({
-				horizontalPiecesCount: 6,
-				verticalPiecesCount: 6
+				horizontalPiecesCount: 3,
+				verticalPiecesCount: 2
 			});
 
 			headbreaker_canvas.shuffle(0.7);
